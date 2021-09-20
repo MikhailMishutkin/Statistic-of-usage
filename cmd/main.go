@@ -16,34 +16,22 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
-	"net/http"
+	"fmt"
 	"sort"
 	"strings"
 	"testtask/pkg/compare"
+	"testtask/pkg/request"
 	"testtask/pkg/separate"
 	"testtask/pkg/storage"
 )
 
-//читаем источник в байтах
-func MakeRequest() []byte {
-	resp, err := http.Get("https://www.simbirsoft.com/")
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return body
-}
-
 func main() {
-
-	MakeRequest()
-	body := string(MakeRequest())
+	var s string
+	fmt.Println("Получение статитистики по количеству уникальных русских слов")
+	fmt.Println("----------------------------------------------------")
+	fmt.Println("Введите(скопируйте полностью) URL источника, по которому необходимо получить статистику:")
+	fmt.Scan(&s)
+	body := string(request.MakeRequest(s))
 	body = separate.Separator(body)
 	body = separate.OnlyLetters(body) // очищаем от всех знаков препинания
 	body = strings.ToTitle(body)      //переводим всё в верхний регистр
