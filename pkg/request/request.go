@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-//читаем источник в байтах
+//Пакет предназначен для чтения URL источникa в байтах
 func MakeRequest(s string) []byte {
 	resp, err := http.Get(s)
 	if err != nil {

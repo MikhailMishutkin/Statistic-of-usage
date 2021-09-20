@@ -14,7 +14,7 @@ var (
 )
 
 func MapFromStr(s string) map[string]bool {
-	S = strings.Fields(s)          // делаем слайс из строки для
+	S = strings.Fields(s)          // делаем слайс из входящей строки для чтения в мапу
 	Words := make(map[string]bool) //инициализация мапы
 
 	//цикл для складывания элементов слайса в промежуточную мапу - убираются дублирующие значения
