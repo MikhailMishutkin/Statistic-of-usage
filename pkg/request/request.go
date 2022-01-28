@@ -13,6 +13,8 @@ func MakeRequest(s string) []byte {
 		log.Fatalln(err)
 	}
 
+	defer resp.Body.Close()
+
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalln(err)
