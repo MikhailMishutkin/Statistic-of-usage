@@ -8,6 +8,8 @@ import (
 
 type UseCase interface {
 	AskUser() string
+	Separate(sl string)
+	ResToSrcn()
 }
 
 type Controller struct {
